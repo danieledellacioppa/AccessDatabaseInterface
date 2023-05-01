@@ -1,0 +1,59 @@
+CREATE TABLE Contacts (
+   ContactID AUTOINCREMENT PRIMARY KEY,
+   FirstName TEXT(50),
+   LastName TEXT(50),
+   CompanyName TEXT(100),
+   JobTitle TEXT(50),
+   EmailAddress TEXT(100),
+   PhoneNumber TEXT(20),
+   Address TEXT(100),
+   Notes MEMO
+);
+
+CREATE TABLE Companies (
+   CompanyID AUTOINCREMENT PRIMARY KEY,
+   CompanyName TEXT(100),
+   Address TEXT(100),
+   PhoneNumber TEXT(20),
+   Website TEXT(100),
+   Industry TEXT(50),
+   Notes MEMO
+);
+
+CREATE TABLE Jobs (
+   JobID AUTOINCREMENT PRIMARY KEY,
+   JobTitle TEXT(50),
+   CompanyID LONG,
+   Location TEXT(100),
+   JobType TEXT(50),
+   Salary TEXT(50),
+   Description MEMO,
+   Requirements MEMO,
+   Deadline DATE,
+   Notes MEMO,
+   FOREIGN KEY (CompanyID) REFERENCES Companies(CompanyID)
+);
+
+CREATE TABLE Candidates (
+   CandidateID AUTOINCREMENT PRIMARY KEY,
+   FirstName TEXT(50),
+   LastName TEXT(50),
+   EmailAddress TEXT(100),
+   PhoneNumber TEXT(20),
+   Address TEXT(100),
+   Skills MEMO,
+   Education MEMO,
+   Experience MEMO,
+   Notes MEMO
+);
+
+CREATE TABLE Applications (
+   ApplicationID AUTOINCREMENT PRIMARY KEY,
+   CandidateID LONG,
+   JobID LONG,
+   DateApplied DATE,
+   Status TEXT(50),
+   Notes MEMO,
+   FOREIGN KEY (CandidateID) REFERENCES Candidates(CandidateID),
+   FOREIGN KEY (JobID) REFERENCES Jobs(JobID)
+);
