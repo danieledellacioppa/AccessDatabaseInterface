@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="healthmarketscience.jackcess.encrypt" type="repository">
+    <properties maven-id="com.healthmarketscience.jackcess:jackcess-encrypt:4.0.2" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/jackcess-encrypt-4.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackcess-4.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-lang3-3.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/bcprov-jdk18on-1.72.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/lib/jackcess-encrypt-4.0.2-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackcess-4.0.0-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-lang3-3.10-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.2-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/bcprov-jdk18on-1.72-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>
