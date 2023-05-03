@@ -14,7 +14,7 @@ import java.sql.*;
 public class Main {
     public static void main(String[] args) {
         // Define the path to the database file
-        String path = "C:\\Users\\daniele\\repo\\AccessDatabaseInterface\\sql\\db\\RecruitisLtdCRM.accdb";
+        String path = "C:\\Users\\daniele\\repo\\AccessDatabaseInterface\\sql\\db\\RecruitisLtdCRMgiorno2.accdb";
         String password = "pippo";
 
         try {
@@ -27,16 +27,16 @@ public class Main {
             Table contactsTable = db.getTable("Contacts");
             for (Row row : contactsTable) {
                 int contactID = (Integer) row.get("ContactID");
-                String firstName = (String) row.get("FirstName");
-                String lastName = (String) row.get("LastName");
-                String companyName = (String) row.get("CompanyName");
-                String jobTitle = (String) row.get("JobTitle");
-                String emailAddress = (String) row.get("EmailAddress");
-                String phoneNumber = (String) row.get("PhoneNumber");
-                String address = (String) row.get("Address");
-                String notes = (String) row.get("Notes");
+                String firstName = (String) row.get("first_name");
+                String lastName = (String) row.get("last_name");
+                String companyName = (String) row.get("email");
+                String jobTitle = (String) row.get("contact");
+                String emailAddress = (String) row.get("Company");
+                String phoneNumber = (String) row.get("Risk");
+                String address = (String) row.get("Status");
+//                String notes = (String) row.get("Notes");
 
-                System.out.println(contactID + "\t" + firstName + "\t" + lastName + "\t" + companyName + "\t" + jobTitle + "\t" + emailAddress + "\t" + phoneNumber + "\t" + address + "\t" + notes);
+                System.out.println(contactID + "\t" + firstName + "\t" + lastName + "\t" + companyName + "\t" + jobTitle + "\t" + emailAddress + "\t" + phoneNumber + "\t" + address);
             }
 
             // Close the database
