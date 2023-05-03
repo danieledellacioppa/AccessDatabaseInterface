@@ -12,10 +12,10 @@ CREATE TABLE Contacts (
 
 CREATE TABLE Contacts (
    ContactID AUTOINCREMENT PRIMARY KEY,
-   FirstName TEXT(50),
-   LastName TEXT(50),
-   EmailAddress TEXT(100),
-   PhoneNumber TEXT(20),
+   first_name TEXT(50),
+   last_name TEXT(50),
+   email TEXT(100),
+   contact TEXT(20),
    Company TEXT(100),
    Risk TEXT(50),
    Status TEXT(50)
