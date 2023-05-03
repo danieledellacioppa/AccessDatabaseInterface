@@ -14,7 +14,7 @@ import java.sql.*;
 public class Main {
     public static void main(String[] args) {
         // Define the path to the database file
-        String path = "C:/Users/danie/Documents/RecruitisLtdCRM.accdb";
+        String path = "C:\\Users\\daniele\\repo\\AccessDatabaseInterface\\sql\\db\\RecruitisLtdCRM.accdb";
         String password = "pippo";
 
         try {
