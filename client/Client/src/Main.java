@@ -3,24 +3,32 @@ import com.healthmarketscience.jackcess.DatabaseBuilder;
 import com.healthmarketscience.jackcess.Row;
 import com.healthmarketscience.jackcess.Table;
 import com.healthmarketscience.jackcess.crypt.CryptCodecProvider;
+import com.healthmarketscience.jackcess.crypt.InvalidCredentialsException;
 import com.healthmarketscience.jackcess.impl.query.QueryImpl;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
+import java.util.Arrays;
+import java.util.Scanner;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // Define the path to the database file
         String path = "C:\\Users\\daniele\\repo\\AccessDatabaseInterface\\sql\\db\\RecruitisLtdCRMgiorno2.accdb";
-        String password = "pippo";
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.print("Enter password: ");
+        char[] password = scanner.nextLine().toCharArray();
+
+        String passwordStr=new String(password);
+        System.out.println("Password is: " +passwordStr);
         try {
             // Open the database with the CryptCodecProvider
             Database db = new DatabaseBuilder(new File(path))
-                    .setCodecProvider(new CryptCodecProvider(password))
+                    .setCodecProvider(new CryptCodecProvider(passwordStr))
                     .open();
 
             // Query the database
@@ -41,8 +49,15 @@ public class Main {
 
             // Close the database
             db.close();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             System.out.println("Error accessing database: " + e.getMessage());
         }
+        catch (InvalidCredentialsException e)
+        {
+            System.out.println("Wrong password: " + e.getMessage());
+        }
+
     }
 }
