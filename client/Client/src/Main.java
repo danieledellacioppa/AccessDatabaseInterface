@@ -16,19 +16,11 @@ import java.util.Scanner;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) throws IOException {
-        // Define the path to the database file
-        String path = "C:\\Users\\daniele\\repo\\AccessDatabaseInterface\\sql\\db\\RecruitisLtdCRMgiorno2.accdb";
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Enter password: ");
-        char[] password = scanner.nextLine().toCharArray();
-
-        String passwordStr=new String(password);
-        System.out.println("Password is: " +passwordStr);
+        Result result = logWithPassword();
         try {
             // Open the database with the CryptCodecProvider
-            Database db = new DatabaseBuilder(new File(path))
-                    .setCodecProvider(new CryptCodecProvider(passwordStr))
+            Database db = new DatabaseBuilder(new File(result.path()))
+                    .setCodecProvider(new CryptCodecProvider(result.passwordStr()))
                     .open();
 
             // Query the database
@@ -59,5 +51,22 @@ public class Main {
             System.out.println("Wrong password: " + e.getMessage());
         }
 
+    }
+
+    private static Result logWithPassword() {
+        // Define the path to the database file
+        String path = "C:\\Users\\daniele\\repo\\AccessDatabaseInterface\\sql\\db\\RecruitisLtdCRMgiorno2.accdb";
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter password: ");
+        char[] password = scanner.nextLine().toCharArray();
+
+        String passwordStr=new String(password);
+        System.out.println("Password is: " +passwordStr);
+        Result result = new Result(path, passwordStr);
+        return result;
+    }
+
+    private record Result(String path, String passwordStr) {
     }
 }
