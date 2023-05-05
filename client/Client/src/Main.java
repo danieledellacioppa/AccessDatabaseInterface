@@ -4,12 +4,9 @@ import com.healthmarketscience.jackcess.Row;
 import com.healthmarketscience.jackcess.Table;
 import com.healthmarketscience.jackcess.crypt.CryptCodecProvider;
 import com.healthmarketscience.jackcess.crypt.InvalidCredentialsException;
-import com.healthmarketscience.jackcess.impl.query.QueryImpl;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.*;
-import java.util.Arrays;
 import java.util.Scanner;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -18,7 +15,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         String path = "C:\\Users\\daniele\\repo\\AccessDatabaseInterface\\sql\\db\\RecruitisLtdCRMgiorno2.accdb";
         Result logResult = logWithPassword(path);
-        try {
+        try
+        {
             // Open the database with the CryptCodecProvider
             Database db = new DatabaseBuilder(new File(logResult.path()))
                     .setCodecProvider(new CryptCodecProvider(logResult.passwordStr()))
@@ -26,19 +24,7 @@ public class Main {
 
             // Query the database
             Table contactsTable = db.getTable("Contacts");
-            for (Row row : contactsTable) {
-                int contactID = (Integer) row.get("ContactID");
-                String firstName = (String) row.get("first_name");
-                String lastName = (String) row.get("last_name");
-                String companyName = (String) row.get("email");
-                String jobTitle = (String) row.get("contact");
-                String emailAddress = (String) row.get("Company");
-                String phoneNumber = (String) row.get("Risk");
-                String address = (String) row.get("Status");
-//                String notes = (String) row.get("Notes");
-
-                System.out.println(contactID + "\t" + firstName + "\t" + lastName + "\t" + companyName + "\t" + jobTitle + "\t" + emailAddress + "\t" + phoneNumber + "\t" + address);
-            }
+            printAllRecords(contactsTable);
 
             // Close the database
             db.close();
@@ -52,6 +38,22 @@ public class Main {
             System.out.println("Wrong password: " + e.getMessage());
         }
 
+    }
+
+    private static void printAllRecords(Table contactsTable) {
+        for (Row row : contactsTable) {
+            int contactID = (Integer) row.get("ContactID");
+            String firstName = (String) row.get("first_name");
+            String lastName = (String) row.get("last_name");
+            String companyName = (String) row.get("email");
+            String jobTitle = (String) row.get("contact");
+            String emailAddress = (String) row.get("Company");
+            String phoneNumber = (String) row.get("Risk");
+            String address = (String) row.get("Status");
+//                String notes = (String) row.get("Notes");
+
+            System.out.println(contactID + "\t" + firstName + "\t" + lastName + "\t" + companyName + "\t" + jobTitle + "\t" + emailAddress + "\t" + phoneNumber + "\t" + address);
+        }
     }
 
     private static Result logWithPassword(String path)
