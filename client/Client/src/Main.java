@@ -16,7 +16,8 @@ import java.util.Scanner;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) throws IOException {
-        Result result = logWithPassword();
+        String path = "C:\\Users\\daniele\\repo\\AccessDatabaseInterface\\sql\\db\\RecruitisLtdCRMgiorno2.accdb";
+        Result result = logWithPassword(path);
         try {
             // Open the database with the CryptCodecProvider
             Database db = new DatabaseBuilder(new File(result.path()))
@@ -53,9 +54,8 @@ public class Main {
 
     }
 
-    private static Result logWithPassword() {
-        // Define the path to the database file
-        String path = "C:\\Users\\daniele\\repo\\AccessDatabaseInterface\\sql\\db\\RecruitisLtdCRMgiorno2.accdb";
+    private static Result logWithPassword(String path)
+    {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter password: ");
