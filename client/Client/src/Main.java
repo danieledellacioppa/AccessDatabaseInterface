@@ -17,11 +17,11 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException {
         String path = "C:\\Users\\daniele\\repo\\AccessDatabaseInterface\\sql\\db\\RecruitisLtdCRMgiorno2.accdb";
-        Result result = logWithPassword(path);
+        Result logResult = logWithPassword(path);
         try {
             // Open the database with the CryptCodecProvider
-            Database db = new DatabaseBuilder(new File(result.path()))
-                    .setCodecProvider(new CryptCodecProvider(result.passwordStr()))
+            Database db = new DatabaseBuilder(new File(logResult.path()))
+                    .setCodecProvider(new CryptCodecProvider(logResult.passwordStr()))
                     .open();
 
             // Query the database
